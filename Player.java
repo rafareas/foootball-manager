@@ -139,5 +139,20 @@ public class Player{
         return new Player(this);
     }
 
+    public float overall_player(){
+        float remate=this.getRemate();
+        float velocidade=this.getVelocidade();
+        float resistencia=this.getResistecia();
+        float destreza=this.getDestreza();
+        float impulsao=this.getImpulsao();
+        float jogo_cabeca=this.getJogo_cabeca();
+        float capac_passe=this.getCapac_passe();
+        float elasticidade=this.getElasticidade();
+
+        float sum = (remate+velocidade+resistencia+destreza+impulsao+jogo_cabeca+capac_passe) ;
+        sum = (elasticidade>0)? (sum+elasticidade)/8 : sum/7;
+
+        return sum;
+    }
     
 }
