@@ -1,3 +1,5 @@
+import java.lang.Math;
+
 public class Player{
     private float remate;
     private float velocidade;
@@ -153,6 +155,19 @@ public class Player{
         sum = (elasticidade>0)? (sum+elasticidade)/8 : sum/7;
 
         return sum;
+    }
+
+    /*Criei essa função para realizar os testes quando um jogador fizer uma jogada
+    Ela pega um random entre 0 e 0.9999999... e multiplica com o atributo selecionado
+    Ou seja, se quisermos saber um chute pro gol colocamos "remate" no atributo, se tocar "capac_passe" e etc.
+    Deu bom
+    Cumprimentos,
+    Vitor
+    */
+    public double teste_de_jogada(float atributo){
+        double teste = Math.random();
+        return teste*atributo;
+
     }
     
 }

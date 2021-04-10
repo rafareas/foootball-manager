@@ -11,5 +11,13 @@ public class Main{
                            "Gabigordo x BruninMatador\n"+
                               ovrlGabi +"           "+ovrlBrunin);
 
+        double teste_do_gabi = gabigordo.teste_de_jogada(gabigordo.getRemate());
+        System.out.println("\nEle chutou com:"+teste_do_gabi);
+
     }
 }
+/*To do:
+-comentar as funçoes
+-Classe dos times
+-Classe da partida
+*/
