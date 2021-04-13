@@ -17,7 +17,12 @@ public class Main{
     }
 }
 /*To do:
--comentar as funçoes
--Classe dos times
+-comentar as funçoes [feito]
+
+-Classe dos times (
+    - construtores, seters and getters [feito]
+    - fazer as funcionalidades do time
+)
+
 -Classe da partida
 */

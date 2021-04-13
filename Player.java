@@ -1,6 +1,9 @@
 import java.lang.Math;
 
 public class Player{
+    
+    /** INSTANCE VARIABLES */
+
     private float remate;
     private float velocidade;
     private float resistencia;
@@ -12,7 +15,10 @@ public class Player{
 
     private String posicao;
     
-    
+    /** -----------------------------------------------*/
+
+    /* CONSTRUCTORS */ 
+
     public Player(){
         this.remate = 0;
         this.velocidade = 0;
@@ -50,6 +56,10 @@ public class Player{
         this.elasticidade = info.getElasticidade();
         this.posicao = info.getPosicao();
     }
+
+    /** -----------------------------------------------*/
+
+    /**  GETTERS AND SETERS */
 
     public float getRemate(){
         return this.remate;
@@ -123,6 +133,9 @@ public class Player{
         this.posicao = pos;
     }
 
+    /** -----------------------------------------------*/
+
+    /** EQUALS AND CLONE */
     public boolean equals(Object o){
 
         if(this == o) return true;
@@ -140,6 +153,10 @@ public class Player{
     public Player clone(){
         return new Player(this);
     }
+
+    /** -----------------------------------------------*/
+
+    /** Calcula o overall do jogador , que é a média de todos os seus atributos  */
 
     public float overall_player(){
         float remate=this.getRemate();
