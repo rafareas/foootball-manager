@@ -14,6 +14,8 @@ public class Player{
     private float elasticidade;
 
     private String posicao;
+    private String nome;
+    private int numero_jogador;
     
     /** -----------------------------------------------*/
 
@@ -29,10 +31,12 @@ public class Player{
         this.capac_passe = 0;
         this.elasticidade = 0;
         this.posicao = "n/a";
+        this.nome = "n/a";
+        this.numero_jogador = 0;
     }
 
     public Player(float nremate, float nvelocidade, float nresistencia, float ndestreza, float nimpulsao, float njogo_cabeca, float ncapac_passe,
-                    float nelasticidade, String nposicao){
+                    float nelasticidade, String nposicao, String nNome, int nnum){
             
         this.remate = nremate;
         this.velocidade = nvelocidade;
@@ -43,6 +47,8 @@ public class Player{
         this.capac_passe = ncapac_passe;
         this.elasticidade = nelasticidade;
         this.posicao = nposicao;
+        this.nome = nNome;
+        this.numero_jogador = nnum;
     }
 
     public Player(Player info){
@@ -55,6 +61,8 @@ public class Player{
         this.capac_passe = info.getCapac_passe();
         this.elasticidade = info.getElasticidade();
         this.posicao = info.getPosicao();
+        this.nome = info.getNome();
+        this.numero_jogador = info.getNumero_jogador();
     }
 
     /** -----------------------------------------------*/
@@ -129,10 +137,26 @@ public class Player{
         return this.posicao;
     }
 
-    public void setPosica(String pos){
+    public void setPosicao(String pos){
         this.posicao = pos;
     }
 
+    public String getNome(){
+        return this.nome;
+    }
+
+    public void setNome(String nome){
+        this.nome = nome;
+    }
+
+    public int getNumero_jogador(){
+        return this.numero_jogador;
+    }
+
+    public void setNumero_jogador(int num){
+        this.numero_jogador = num;
+    }
+    
     /** -----------------------------------------------*/
 
     /** EQUALS AND CLONE */
