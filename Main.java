@@ -2,38 +2,35 @@ import java.util.ArrayList;
 
 public class Main{
     public static void main(String[] args){
+        //Titulo do jogo 
         System.out.println("+---------------------------+\n\nwelcome to football manager!\n\n+---------------------------+\n");
-        Player gabigordo = new Player(82,78,70,75,76,60,70,0,"Atacante","gabigordo",9);
-        Player bruninMatador = new Player(35,20,90,9,1,2,1,30,"Goleiro","bruninMatador",7);
-        ArrayList<Player> players = new ArrayList<Player>();
-        players.add(gabigordo.clone());
-        Team joguin = new Team(players,"flasco");
-        joguin.addPlayer_time(bruninMatador);
-
-        System.out.println(joguin.getNome_time());
         
-        for(Player i : joguin.getPlayers()){
+        //Criação de 2 jogadores com seus determinados atributos
+        Player jog_1 = new Player(82,78,70,75,76,60,70,0,"Atacante","jog_1",9);
+        Player jog_2 = new Player(35,20,90,9,1,2,1,30,"Goleiro","jog_2",7);
+        
+        //Teste de criação de 1 time com os dados jogadores
+        ArrayList<Player> players = new ArrayList<Player>();
+        players.add(jog_1.clone());
+        Team time = new Team(players,"POO F.C.");
+        time.addPlayer_time(jog_2);
+
+        //Informações do time
+        System.out.println(time.getNome_time());
+        for(Player i : time.getPlayers()){
             System.out.println(i.getNome()+"\n"+ i.overall_player());
         }
 
-        float ovrlGabi = gabigordo.overall_player();
-        float ovrlBrunin = bruninMatador.overall_player();
+        //Cálculo do overall dos jogadores
+        float ovrl_1 = jog_1.overall_player();
+        float ovrl_2= jog_2.overall_player();
         System.out.println("Batalha de overall:\n\n"+
-                           "Gabigordo x BruninMatador\n"+
-                              ovrlGabi +"           "+ovrlBrunin);
+                           "  1      x      2\n"+
+                              ovrl_1 +"           "+ovrl_2);
 
-        double teste_do_gabi = gabigordo.teste_de_jogada(gabigordo.getRemate());
-        System.out.println("\nEle chutou com:"+teste_do_gabi);
+        //Teste de jogada de um determinado jogador
+        double teste_1 = jog_1.teste_de_jogada(jog_1.getRemate());
+        System.out.println("\nJog 1 chutou com: "+teste_1);
 
     }
 }
-/*To do:
--comentar as funçoes [feito]
-
--Classe dos times (
-    - construtores, seters and getters [feito]
-    - fazer as funcionalidades do time
-)
-
--Classe da partida
-*/

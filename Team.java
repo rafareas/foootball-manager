@@ -60,7 +60,7 @@ public class Team {
 
     
     /** -----------------------------------------------*/
-
+    /*Função para incrementar o time com um novo jogador*/
     public void addPlayer_time(Player p){
         this.jogadores.add(p.clone());
     }

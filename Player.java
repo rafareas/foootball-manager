@@ -198,13 +198,10 @@ public class Player{
         return sum;
     }
 
-    /*Criei essa função para realizar os testes quando um jogador fizer uma jogada
-    Ela pega um random entre 0 e 0.9999999... e multiplica com o atributo selecionado
-    Ou seja, se quisermos saber um chute pro gol colocamos "remate" no atributo, se tocar "capac_passe" e etc.
-    Deu bom
-    Cumprimentos,
-    Vitor
-    */
+    /*Função para calcular o êxito de determinada jogada. 
+      Para isto usa-se o Math.random que nos fornece um numero de 0 a 0.9999 e multiplicamos com o atributo.
+      O resultado desta multiplicação é o êxito da jogada.
+      */
     public double teste_de_jogada(float atributo){
         double teste = Math.random();
         return teste*atributo;
