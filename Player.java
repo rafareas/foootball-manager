@@ -1,4 +1,7 @@
 import java.lang.Math;
+import java.io.*;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class Player{
     
@@ -207,5 +210,7 @@ public class Player{
         return teste*atributo;
 
     }
+
+    
     
 }

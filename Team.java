@@ -1,5 +1,9 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.io.*;
+import java.util.*;
+import java.util.stream.Collectors;
+
 public class Team {
     
     /** INSTANCE VARIABLES*/
@@ -65,4 +69,25 @@ public class Team {
         this.jogadores.add(p.clone());
     }
 
+
+    public void saveToCSV(String fn) throws FileNotFoundException, IOException{
+        PrintWriter pw = new PrintWriter(new FileOutputStream(fn));
+        pw.flush();
+        pw.close(); 
+    }
+
+    public void saveToBinary(String fn) throws FileNotFoundException, IOException{
+        ObjectOutputStream o = new ObjectOutputStream(new FileOutputStream(fn));
+
+        o.writeObject(this);
+        o.flush();
+        o.close();
+    }
+
+    public Team readBinary(String f) throws IOException, ClassNotFoundException{
+        ObjectInputStream i = new ObjectInputStream(new FileInputStream(f));
+        Team d = (Team) i.readObject();
+        i.close();
+        return d;
+    }
 }
