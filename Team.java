@@ -9,7 +9,7 @@ public class Team {
     /** INSTANCE VARIABLES*/
     
     private List <Player> jogadores;
-    private float team_overall;
+    private double team_overall;
     private String nome_time;
     
     /** -----------------------------------------------*/
@@ -46,7 +46,7 @@ public class Team {
         return this.nome_time;
     }
 
-    public float getOverall(){
+    public double getOverall(){
         return this.team_overall;
     }
 
