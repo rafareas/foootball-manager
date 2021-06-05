@@ -15,6 +15,20 @@ public class Lateral extends Player {
     	this.cruzamento = ncruz;
     }
 
+    public Lateral(Lateral info){
+
+        super.setNome(info.getNome());
+        super.setNumero_jogador(info.getNumero_jogador());
+        super.setRemate(info.getRemate());
+        super.setVelocidade(info.getVelocidade());
+        super.setResistencia(info.getResistencia());
+        super.setDestreza(info.getDestreza());
+        super.setImpulsao(info.getImpulsao());
+        super.setJogo_cabeca(info.getJogo_cabeca());
+        super.setCapac_passe(info.getCapac_passe());
+        this.setCruz(info.getCruz());
+    }
+
     public float getCruz()
     {
     	return this.cruzamento;
@@ -33,20 +47,24 @@ public class Lateral extends Player {
     -----0.025 para os restantes 
     */
 
-    public double overall()
+    double overall()
     {
-        double overall = 0;
+        double nover = 0;
 
-        overall += 0.4   * super.getVelocidade();
-        overall += 0.25  * this.getCruz();
-        overall += 0.15  * super.getDestreza();
-        overall += 0.1   * super.getCapac_passe();
-        overall += 0.025 * super.getRemate();
-        overall += 0.025 * super.getResistencia();
-        overall += 0.025 * super.getImpulsao();
-        overall += 0.025 * super.getJogo_cabeca();
+        nover += 0.4   * super.getVelocidade();
+        nover += 0.25  * this.getCruz();
+        nover += 0.15  * super.getDestreza();
+        nover += 0.1   * super.getCapac_passe();
+        nover += 0.025 * super.getRemate();
+        nover += 0.025 * super.getResistencia();
+        nover += 0.025 * super.getImpulsao();
+        nover += 0.025 * super.getJogo_cabeca();
 
-        return overall;
+        return nover;
     }
     
+    public Lateral clone()
+    {
+        return new Lateral(this);
+    }
 }

@@ -14,6 +14,20 @@ public class GuardaRedes extends Player {
     	this.elasticidade = nelast;
     }
 
+    public GuardaRedes(GuardaRedes info){
+
+        super.setNome(info.getNome());
+        super.setNumero_jogador(info.getNumero_jogador());
+        super.setRemate(info.getRemate());
+        super.setVelocidade(info.getVelocidade());
+        super.setResistencia(info.getResistencia());
+        super.setDestreza(info.getDestreza());
+        super.setImpulsao(info.getImpulsao());
+        super.setJogo_cabeca(info.getJogo_cabeca());
+        super.setCapac_passe(info.getCapac_passe());
+        this.setElast(info.getElast());
+    }
+
     public float getElast()
     {
     	return this.elasticidade;
@@ -24,28 +38,26 @@ public class GuardaRedes extends Player {
     	this.elasticidade = nelast;
     }
 
-    /*Calcula o Overall do jogador por media ponderada ,onde os pesos são:
-    -----0.400 para o atributo mais imortante
-    -----0.250 para o segundo
-    -----0.150 para o terceiro
-    -----0.100 para o quarto
-    -----0.025 para os restantes 
-    */
 
-    public double overall()
+    double overall()
     {
-        double overall = 0;
+        double nover = 0;
 
-     	overall += 0.4   * this.getElast();
-        overall += 0.25  * super.getResistencia();
-        overall += 0.15  * super.getCapac_passe();
-        overall += 0.1   * super.getVelocidade();
-        overall += 0.025 * super.getRemate();
-        overall += 0.025 * super.getDestreza();
-        overall += 0.025 * super.getImpulsao();
-        overall += 0.025 * super.getJogo_cabeca();
+     	nover += 0.4   * this.getElast();
+        nover += 0.25  * super.getResistencia();
+        nover += 0.15  * super.getCapac_passe();
+        nover += 0.1   * super.getVelocidade();
+        nover += 0.025 * super.getRemate();
+        nover += 0.025 * super.getDestreza();
+        nover += 0.025 * super.getImpulsao();
+        nover += 0.025 * super.getJogo_cabeca();
 
-     	return overall;
+     	return nover;
+    }
+
+    public GuardaRedes clone()
+    {
+        return new GuardaRedes(this);
     }
 
 }

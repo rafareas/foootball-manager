@@ -20,22 +20,25 @@ public class Team {
         this.team_overall = 0; 
         this.nome_time = "";
     }
+   
     public Team(List<Player>players,String time){
         this.jogadores = new ArrayList<>();
         this.team_overall = 0;
+        
         int i = 0;
         for(Player j : players){
             i++;
             this.jogadores.add(j.clone());
-            this.team_overall += j.overall_player();
+            this.team_overall +=  j.overall();
         }
+
         this.team_overall /= i;
         this.nome_time = time;
      }
-
+    
      public Team(Team t){
          this.jogadores = t.getPlayers();
-         this.team_overall = t.getOverall();
+         this.team_overall = t.getTeamOverall();
          this.nome_time = t.getNome_time();
      }
 
@@ -46,7 +49,7 @@ public class Team {
         return this.nome_time;
     }
 
-    public double getOverall(){
+    public double getTeamOverall(){
         return this.team_overall;
     }
 
@@ -63,10 +66,45 @@ public class Team {
     }
 
     
-    /** -----------------------------------------------*/
+    /*---------------------------------------------------*/
+
+    /*Recalcula o Overall do time*/
+    public void recalcOverall()
+    {
+        int size = this.jogadores.size();
+       
+        int soma = 0;
+        for (Player j : this.jogadores)
+            soma += j.overall();
+
+        if (soma != 0) this.team_overall = soma/size;
+        else this.team_overall = 0.0;
+    }
+
     /*Função para incrementar o time com um novo jogador*/
     public void addPlayer_time(Player p){
-        this.jogadores.add(p.clone());
+        if (this.jogadores.contains(p))
+            System.out.println(p.getNome()+" já está no time!");
+
+        else
+        {
+            this.jogadores.add(p.clone());
+            this.recalcOverall();
+        }
+    }
+
+    /*Função para remover um determinado jogador do time*/
+    public void removePlayer_time(Player p)
+    {
+        if (this.jogadores.contains(p))
+        {
+            this.jogadores.remove(p.clone());
+            this.recalcOverall();
+        }
+
+        else
+            System.out.println(p.getNome()+" não está no time!");
+        
     }
 
 

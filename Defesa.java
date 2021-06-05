@@ -15,6 +15,20 @@ public class Defesa extends Player {
     	this.protecao = nprot;
     }
 
+    public Defesa(Defesa info){
+
+        super.setNome(info.getNome());
+        super.setNumero_jogador(info.getNumero_jogador());
+        super.setRemate(info.getRemate());
+        super.setVelocidade(info.getVelocidade());
+        super.setResistencia(info.getResistencia());
+        super.setDestreza(info.getDestreza());
+        super.setImpulsao(info.getImpulsao());
+        super.setJogo_cabeca(info.getJogo_cabeca());
+        super.setCapac_passe(info.getCapac_passe());
+        this.setProt(info.getProt());
+    }
+
     public float getProt()
     {
     	return this.protecao;
@@ -33,19 +47,24 @@ public class Defesa extends Player {
     -----0.025 para os restantes 
     */
 
-    public double overall()
+    double overall()
     {
-        double overall = 0;
+        double nover = 0;
 
-        overall += 0.4   * this.getProt();
-        overall += 0.25  * super.getCapac_passe();
-        overall += 0.15  * super.getResistencia();
-        overall += 0.1   * super.getJogo_cabeca();
-        overall += 0.025 * super.getRemate();
-        overall += 0.025 * super.getVelocidade();
-        overall += 0.025 * super.getDestreza();
-        overall += 0.025 * super.getImpulsao();
+        nover += 0.4   * this.getProt();
+        nover += 0.25  * super.getCapac_passe();
+        nover += 0.15  * super.getResistencia();
+        nover += 0.1   * super.getJogo_cabeca();
+        nover += 0.025 * super.getRemate();
+        nover += 0.025 * super.getVelocidade();
+        nover += 0.025 * super.getDestreza();
+        nover += 0.025 * super.getImpulsao();
 
-        return overall;
+        return nover;
+    }
+
+    public Defesa clone()
+    {
+        return new Defesa(this);
     }
 }

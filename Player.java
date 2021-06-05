@@ -3,13 +3,12 @@ import java.io.*;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class Player{
+public abstract class Player{
     
     /** INSTANCE VARIABLES */
 
     private String nome;
     private int numero_jogador;
-
     private float remate;
     private float velocidade;
     private float resistencia;
@@ -17,8 +16,6 @@ public class Player{
     private float impulsao;
     private float jogo_cabeca;
     private float capac_passe;
-
-    //Falta historico de times
     
     /** -----------------------------------------------*/
 
@@ -144,7 +141,7 @@ public class Player{
     
     /** -----------------------------------------------*/
 
-    /** EQUALS AND CLONE */
+    /** EQUALS*/
     public boolean equals(Object o){
 
         if(this == o) return true;
@@ -160,10 +157,8 @@ public class Player{
     
     }
 
-    public Player clone(){
-        return new Player(this);
-    }
+    /** -----------------------------------------------*/  
+    /*ABSTRACT FUNCTION TO ALL SUBCLASSES*/
 
-    /** -----------------------------------------------*/    
-    
+    abstract double overall();  
 }
