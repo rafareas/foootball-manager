@@ -16,6 +16,7 @@ public abstract class Player{
     private float impulsao;
     private float jogo_cabeca;
     private float capac_passe;
+    private String historico;
     
     /** -----------------------------------------------*/
 
@@ -31,12 +32,13 @@ public abstract class Player{
         this.destreza = 0;
         this.impulsao = 0;
         this.jogo_cabeca = 0;
-        this.capac_passe = 0;        
+        this.capac_passe = 0; 
+        this.historico = "n/a";       
         
     }
 
     public Player(String nNome, int nnum,float nremate, float nvelocidade, float nresistencia, float ndestreza, 
-                    float nimpulsao, float njogo_cabeca, float ncapac_passe){
+                    float nimpulsao, float njogo_cabeca, float ncapac_passe,String nhistory){
          
         this.nome = nNome;
         this.numero_jogador = nnum;
@@ -47,6 +49,7 @@ public abstract class Player{
         this.impulsao = nimpulsao;
         this.jogo_cabeca = njogo_cabeca;
         this.capac_passe = ncapac_passe;
+        this.historico = nhistory;
         
     }
 
@@ -61,6 +64,7 @@ public abstract class Player{
         this.impulsao = info.getImpulsao();
         this.jogo_cabeca = info.getJogo_cabeca();
         this.capac_passe = info.getCapac_passe();
+        this.historico = info.getHistorico();
     }
 
     /** -----------------------------------------------*/
@@ -138,10 +142,20 @@ public abstract class Player{
     public void setCapac_passe(float cp){
         this.capac_passe = cp;
     }
+
+    public String getHistorico()
+    {
+        return this.historico;
+    }
+
+    public void setHistorico(String hist)
+    {
+        this.historico = hist;
+    }
     
     /** -----------------------------------------------*/
 
-    /** EQUALS*/
+    /* EQUALS AND CLONE */
     public boolean equals(Object o){
 
         if(this == o) return true;
@@ -157,8 +171,26 @@ public abstract class Player{
     
     }
 
+    protected abstract Player clone();
+
     /** -----------------------------------------------*/  
     /*ABSTRACT FUNCTION TO ALL SUBCLASSES*/
 
-    abstract double overall();  
+    abstract double overall(); 
+
+    /*------------------------------------------------*/
+
+    /*HISTORY FORMAT*/
+    public String history()
+    {
+        String[] clubs = this.getHistorico().split(";",0);
+        String output = "+------Historico de "+this.getNome()+"------+\n";
+
+        for(int i= 0 ; i < clubs.length; i++)
+        {
+            output += Integer.toString(i+1)+" -> " + clubs[i] + "\n";
+        }
+
+        return output;
+    }
 }

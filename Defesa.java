@@ -9,9 +9,9 @@ public class Defesa extends Player {
 	}
 
 	public Defesa (String nNome, int nnum,float nremate, float nvelocidade, float nresistencia, float ndestreza, 
-    					float nimpulsao, float njogo_cabeca, float ncapac_passe,float nprot){
+    					float nimpulsao, float njogo_cabeca, float ncapac_passe,String nhistory,float nprot){
 
-    	super(nNome, nnum, nremate, nvelocidade, nresistencia, ndestreza, nimpulsao, njogo_cabeca, ncapac_passe);
+    	super(nNome, nnum, nremate, nvelocidade, nresistencia,ndestreza,nimpulsao,njogo_cabeca, ncapac_passe, nhistory);
     	this.protecao = nprot;
     }
 
@@ -26,6 +26,7 @@ public class Defesa extends Player {
         super.setImpulsao(info.getImpulsao());
         super.setJogo_cabeca(info.getJogo_cabeca());
         super.setCapac_passe(info.getCapac_passe());
+        super.setHistorico(info.getHistorico());
         this.setProt(info.getProt());
     }
 
@@ -63,7 +64,7 @@ public class Defesa extends Player {
         return nover;
     }
 
-    public Defesa clone()
+    public Player clone()
     {
         return new Defesa(this);
     }

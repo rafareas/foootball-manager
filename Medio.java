@@ -9,9 +9,9 @@ public class Medio extends Player {
 	}
 
 	public Medio (String nNome, int nnum,float nremate, float nvelocidade, float nresistencia, float ndestreza, 
-    					float nimpulsao, float njogo_cabeca, float ncapac_passe,float nrec){
+    					float nimpulsao, float njogo_cabeca, float ncapac_passe,String nhistory,float nrec){
 
-    	super(nNome, nnum, nremate, nvelocidade, nresistencia, ndestreza, nimpulsao, njogo_cabeca, ncapac_passe);
+    	super(nNome, nnum, nremate,nvelocidade,nresistencia,ndestreza,nimpulsao, njogo_cabeca, ncapac_passe, nhistory);
     	this.recuperacao = nrec;
     }
 
@@ -26,6 +26,7 @@ public class Medio extends Player {
         super.setImpulsao(info.getImpulsao());
         super.setJogo_cabeca(info.getJogo_cabeca());
         super.setCapac_passe(info.getCapac_passe());
+        super.setHistorico(info.getHistorico());
         this.setRecu(info.getRecu());
     }
 
@@ -63,7 +64,7 @@ public class Medio extends Player {
         return nover;
     }
 
-    public Medio clone()
+    public Player clone()
     {
         return new Medio(this);
     }*/

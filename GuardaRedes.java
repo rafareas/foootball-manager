@@ -8,9 +8,9 @@ public class GuardaRedes extends Player {
 	}
     
     public GuardaRedes (String nNome, int nnum,float nremate, float nvelocidade, float nresistencia, float ndestreza, 
-    					float nimpulsao, float njogo_cabeca, float ncapac_passe,float nelast){
+    					float nimpulsao, float njogo_cabeca, float ncapac_passe,String nhistory,float nelast){
 
-    	super(nNome, nnum, nremate, nvelocidade, nresistencia, ndestreza, nimpulsao, njogo_cabeca, ncapac_passe);
+    	super(nNome, nnum, nremate, nvelocidade, nresistencia,ndestreza,nimpulsao, njogo_cabeca, ncapac_passe,nhistory);
     	this.elasticidade = nelast;
     }
 
@@ -25,6 +25,7 @@ public class GuardaRedes extends Player {
         super.setImpulsao(info.getImpulsao());
         super.setJogo_cabeca(info.getJogo_cabeca());
         super.setCapac_passe(info.getCapac_passe());
+        super.setHistorico(info.getHistorico());
         this.setElast(info.getElast());
     }
 
@@ -55,7 +56,7 @@ public class GuardaRedes extends Player {
      	return nover;
     }
 
-    public GuardaRedes clone()
+    public Player clone()
     {
         return new GuardaRedes(this);
     }

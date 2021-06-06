@@ -9,9 +9,9 @@ public class Lateral extends Player {
 	}
 
 	public Lateral (String nNome, int nnum,float nremate, float nvelocidade, float nresistencia, float ndestreza, 
-    					float nimpulsao, float njogo_cabeca, float ncapac_passe,float ncruz){
+    					float nimpulsao, float njogo_cabeca, float ncapac_passe,String nhistory,float ncruz){
 
-    	super(nNome, nnum, nremate, nvelocidade, nresistencia, ndestreza, nimpulsao, njogo_cabeca, ncapac_passe);
+    	super(nNome, nnum, nremate, nvelocidade, nresistencia, ndestreza,nimpulsao,njogo_cabeca,ncapac_passe, nhistory);
     	this.cruzamento = ncruz;
     }
 
@@ -26,6 +26,7 @@ public class Lateral extends Player {
         super.setImpulsao(info.getImpulsao());
         super.setJogo_cabeca(info.getJogo_cabeca());
         super.setCapac_passe(info.getCapac_passe());
+        super.setHistorico(info.getHistorico());
         this.setCruz(info.getCruz());
     }
 
@@ -63,7 +64,7 @@ public class Lateral extends Player {
         return nover;
     }
     
-    public Lateral clone()
+    public Player clone()
     {
         return new Lateral(this);
     }

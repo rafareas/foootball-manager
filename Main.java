@@ -34,25 +34,16 @@ public class Main{
         double teste_1 = jog_1.teste_de_jogada(jog_1.getRemate());
         System.out.println("\nJog 1 chutou com: "+teste_1);
 */
-        Player lt = new Lateral("Gerson", 10 , 30 , 73, 42, 57, 45, 17, 82, 51);
-        Player av = new Avancado("Pele", 10 , 99 , 99, 99, 99, 99, 99, 99, 99);
-        System.out.println ("Gerson: "+lt.overall()+" Pele: "+av.overall());
-        Team tm = new Team();
-        System.out.println("Antes de contratar: "+tm.getTeamOverall()+"\n");
-        tm.addPlayer_time(lt);
-        tm.addPlayer_time(lt);
-        System.out.println("Sem Pele: "+tm.getTeamOverall()+"\n");
-        tm.addPlayer_time(av);
-        System.out.println("Com Pele: "+tm.getTeamOverall()+"\n");
-        tm.removePlayer_time(lt);
-        System.out.println("Sem Gerson: "+tm.getTeamOverall()+"\n");
-        tm.removePlayer_time(av);
-        tm.removePlayer_time(av);
-        System.out.println("Sem Ninguem: "+tm.getTeamOverall()+"\n");
+        Player av = new Avancado("Pele", 10 , 99 , 99, 99, 99, 99, 99, 99,"", 99);
+        Team t1 = new Team();
+        Team t2 = new Team();
+        t1.setNome_time("Santos");
+        t1.addPlayer_time(av);
+        t1.removePlayer_time(av);
+        t2.setNome_time("Flamengo");
+        t2.addPlayer_time(av);
+        System.out.println(av.history());
+
 
     }
 }
-
-//MUDAR CAMISA AO ENTRAR NO TIME NOVO
-//RESOLVER QUESTAO DO CLONE
-//HISTORICO DE TIMES

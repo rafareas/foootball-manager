@@ -48,6 +48,10 @@ public class Team {
     public String getNome_time(){
         return this.nome_time;
     }
+    public void setNome_time(String name)
+    {
+        this.nome_time = name;
+    }
 
     public double getTeamOverall(){
         return this.team_overall;
@@ -64,7 +68,6 @@ public class Team {
         }
         return time;
     }
-
     
     /*---------------------------------------------------*/
 
@@ -73,12 +76,27 @@ public class Team {
     {
         int size = this.jogadores.size();
        
-        int soma = 0;
+        double soma = 0;
         for (Player j : this.jogadores)
             soma += j.overall();
 
         if (soma != 0) this.team_overall = soma/size;
         else this.team_overall = 0.0;
+    }
+
+    /*Função para garantir que o jogador possui uma camisa valida no time*/
+    public void checkShirt(Player p)
+    {
+        ArrayList<Integer> lst = new ArrayList<>();
+        for(Player pl : this.jogadores)
+            lst.add(pl.getNumero_jogador());
+
+        while(lst.contains(p.getNumero_jogador()))
+        {
+            int number = (int) (Math.random() * 100);
+            p.setNumero_jogador(number);
+        }
+
     }
 
     /*Função para incrementar o time com um novo jogador*/
@@ -88,6 +106,8 @@ public class Team {
 
         else
         {
+            this.checkShirt(p);
+            p.setHistorico(p.getHistorico()+this.getNome_time()+";");
             this.jogadores.add(p.clone());
             this.recalcOverall();
         }
@@ -107,6 +127,7 @@ public class Team {
         
     }
 
+    /*----------------------------------------------------------------------------------*/
 
     public void saveToCSV(String fn) throws FileNotFoundException, IOException{
         PrintWriter pw = new PrintWriter(new FileOutputStream(fn));
