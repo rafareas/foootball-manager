@@ -34,7 +34,7 @@ public class Main{
         double teste_1 = jog_1.teste_de_jogada(jog_1.getRemate());
         System.out.println("\nJog 1 chutou com: "+teste_1);
 */
-        Player av = new Avancado("Pele", 10 , 99 , 99, 99, 99, 99, 99, 99,"", 99);
+        /*Player av = new Avancado("Pele", 10 , 99 , 99, 99, 99, 99, 99, 99, 99);
         Team t1 = new Team();
         Team t2 = new Team();
         t1.setNome_time("Santos");
@@ -42,7 +42,10 @@ public class Main{
         t1.removePlayer_time(av);
         t2.setNome_time("Flamengo");
         t2.addPlayer_time(av);
-        System.out.println(av.history());
+        System.out.println(av.history());*/
+
+        Avancado av = new Avancado();
+        av.parse("../logsV2.txt");
 
 
     }

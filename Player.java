@@ -33,7 +33,7 @@ public abstract class Player{
         this.impulsao = 0;
         this.jogo_cabeca = 0;
         this.capac_passe = 0; 
-        this.historico = "n/a";       
+        this.historico = "";       
         
     }
 
@@ -49,7 +49,7 @@ public abstract class Player{
         this.impulsao = nimpulsao;
         this.jogo_cabeca = njogo_cabeca;
         this.capac_passe = ncapac_passe;
-        
+        this.historico = "";
     }
 
     public Player(Player info){
@@ -182,10 +182,10 @@ public abstract class Player{
     /*HISTORY FORMAT*/
     public String history()
     {
-        String[] clubs = this.getHistorico().split(";",0);
+        String[] clubs = this.getHistorico().split("\n",0);
         String output = "+------Historico de "+this.getNome()+"------+\n";
 
-        for(int i= 0 ; i < clubs.length; i++)
+        for(int i = 0 ; i < clubs.length; i++)
         {
             output += Integer.toString(i+1)+" -> " + clubs[i] + "\n";
         }

@@ -52,10 +52,10 @@ public class LoadFile {
                     if (ultima == null) throw new LinhaIncorretaException(); //we need to insert the player into the team
                     ultima.insereJogador(j.clone()); //if no team was parsed previously, file is not well-formed
                     break;
-                case "Jogo":
+                /*case "Jogo":
                     Jogo jo = Jogo.parse(linhaPartida[1]);
                     jogos.add(jo);
-                    break;
+                    break;*/
                 default:
                     throw new LinhaIncorretaException();
 

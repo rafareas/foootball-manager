@@ -107,7 +107,7 @@ public class Team {
         else
         {
             this.checkShirt(p);
-            p.setHistorico(p.getHistorico()+this.getNome_time()+";");
+            p.setHistorico(p.getHistorico()+this.getNome_time()+"\n");
             this.jogadores.add(p.clone());
             this.recalcOverall();
         }
