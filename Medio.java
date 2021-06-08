@@ -8,10 +8,10 @@ public class Medio extends Player {
 		this.recuperacao = 0;
 	}
 
-	public Medio (String nNome, int nnum,float nremate, float nvelocidade, float nresistencia, float ndestreza, 
-    					float nimpulsao, float njogo_cabeca, float ncapac_passe,String nhistory,float nrec){
+	public Medio (String nNome, int nnum,float nvelocidade, float nresistencia, float ndestreza, 
+    					float nimpulsao, float njogo_cabeca,float nremate, float ncapac_passe,float nrec){
 
-    	super(nNome, nnum, nremate,nvelocidade,nresistencia,ndestreza,nimpulsao, njogo_cabeca, ncapac_passe, nhistory);
+    	super(nNome, nnum, nremate,nvelocidade,nresistencia,ndestreza,nimpulsao, njogo_cabeca, ncapac_passe);
     	this.recuperacao = nrec;
     }
 
@@ -28,6 +28,19 @@ public class Medio extends Player {
         super.setCapac_passe(info.getCapac_passe());
         super.setHistorico(info.getHistorico());
         this.setRecu(info.getRecu());
+    }
+
+    public static Medio parse(String input){
+        String[] campos = input.split(",");
+        return new Medio(campos[0], Integer.parseInt(campos[1]),
+                Float.parseFloat(campos[2]),
+                Float.parseFloat(campos[3]),
+                Float.parseFloat(campos[4]),
+                Float.parseFloat(campos[5]),
+                Float.parseFloat(campos[6]),
+                Float.parseFloat(campos[7]),
+                Float.parseFloat(campos[8]),
+                Float.parseFloat(campos[9]));
     }
 
     public float getRecu()
@@ -67,6 +80,6 @@ public class Medio extends Player {
     public Player clone()
     {
         return new Medio(this);
-    }*/
+    }
 
 }

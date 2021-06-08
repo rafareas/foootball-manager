@@ -8,10 +8,11 @@ public class Lateral extends Player {
 		this.cruzamento = 0;
 	}
 
-	public Lateral (String nNome, int nnum,float nremate, float nvelocidade, float nresistencia, float ndestreza, 
-    					float nimpulsao, float njogo_cabeca, float ncapac_passe,String nhistory,float ncruz){
+	public Lateral (String nNome, int nnum,float nvelocidade, float nresistencia, float ndestreza, 
+    float nimpulsao, float njogo_cabeca,float nremate, float ncapac_passe,float ncruz){
 
-    	super(nNome, nnum, nremate, nvelocidade, nresistencia, ndestreza,nimpulsao,njogo_cabeca,ncapac_passe, nhistory);
+
+    	super(nNome, nnum, nremate, nvelocidade, nresistencia, ndestreza,nimpulsao,njogo_cabeca,ncapac_passe);
     	this.cruzamento = ncruz;
     }
 
@@ -28,6 +29,19 @@ public class Lateral extends Player {
         super.setCapac_passe(info.getCapac_passe());
         super.setHistorico(info.getHistorico());
         this.setCruz(info.getCruz());
+    }
+
+    public static Lateral parse(String input){
+        String[] campos = input.split(",");
+        return new Lateral(campos[0], Integer.parseInt(campos[1]),
+                Float.parseFloat(campos[2]),
+                Float.parseFloat(campos[3]),
+                Float.parseFloat(campos[4]),
+                Float.parseFloat(campos[5]),
+                Float.parseFloat(campos[6]),
+                Float.parseFloat(campos[7]),
+                Float.parseFloat(campos[8]),
+                Float.parseFloat(campos[9]));
     }
 
     public float getCruz()

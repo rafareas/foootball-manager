@@ -8,10 +8,10 @@ public class Defesa extends Player {
 		this.protecao = 0;
 	}
 
-	public Defesa (String nNome, int nnum,float nremate, float nvelocidade, float nresistencia, float ndestreza, 
-    					float nimpulsao, float njogo_cabeca, float ncapac_passe,String nhistory,float nprot){
+	public Defesa (String nNome, int nnum,float nvelocidade, float nresistencia, float ndestreza, 
+    float nimpulsao, float njogo_cabeca,float nremate, float ncapac_passe,float nprot){
 
-    	super(nNome, nnum, nremate, nvelocidade, nresistencia,ndestreza,nimpulsao,njogo_cabeca, ncapac_passe, nhistory);
+    	super(nNome, nnum, nremate, nvelocidade, nresistencia,ndestreza,nimpulsao,njogo_cabeca, ncapac_passe);
     	this.protecao = nprot;
     }
 
@@ -30,6 +30,19 @@ public class Defesa extends Player {
         this.setProt(info.getProt());
     }
 
+    public static Defesa parse(String input){
+        String[] campos = input.split(",");
+        return new Defesa(campos[0], Integer.parseInt(campos[1]),
+                Float.parseFloat(campos[2]),
+                Float.parseFloat(campos[3]),
+                Float.parseFloat(campos[4]),
+                Float.parseFloat(campos[5]),
+                Float.parseFloat(campos[6]),
+                Float.parseFloat(campos[7]),
+                Float.parseFloat(campos[8]),
+                Float.parseFloat(campos[9]));
+    }
+    
     public float getProt()
     {
     	return this.protecao;

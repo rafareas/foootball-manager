@@ -38,7 +38,7 @@ public abstract class Player{
     }
 
     public Player(String nNome, int nnum,float nremate, float nvelocidade, float nresistencia, float ndestreza, 
-                    float nimpulsao, float njogo_cabeca, float ncapac_passe,String nhistory){
+                    float nimpulsao, float njogo_cabeca, float ncapac_passe){
          
         this.nome = nNome;
         this.numero_jogador = nnum;
@@ -49,7 +49,6 @@ public abstract class Player{
         this.impulsao = nimpulsao;
         this.jogo_cabeca = njogo_cabeca;
         this.capac_passe = ncapac_passe;
-        this.historico = nhistory;
         
     }
 

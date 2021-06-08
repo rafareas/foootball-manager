@@ -8,10 +8,10 @@ public class Avancado extends Player {
 		this.ambidestria = 0;
 	}
 
-	public Avancado (String nNome, int nnum,float nremate, float nvelocidade, float nresistencia, float ndestreza, 
-    					float nimpulsao, float njogo_cabeca, float ncapac_passe,String nhistory,float nambi){
+	public Avancado (String nNome, int nnum,float nvelocidade, float nresistencia, float ndestreza, 
+    float nimpulsao, float njogo_cabeca,float nremate, float ncapac_passe,float nambi){
 
-    	super(nNome, nnum,nremate,nvelocidade,nresistencia, ndestreza, nimpulsao, njogo_cabeca, ncapac_passe, nhistory);
+    	super(nNome, nnum,nremate,nvelocidade,nresistencia, ndestreza, nimpulsao, njogo_cabeca, ncapac_passe);
     	this.ambidestria = nambi;
     }
 
@@ -28,6 +28,19 @@ public class Avancado extends Player {
         super.setCapac_passe(info.getCapac_passe());
         super.setHistorico(info.getHistorico());
         this.setAmbi(info.getAmbi());
+    }
+
+    public static Avancado parse(String input){
+        String[] campos = input.split(",");
+        return new Avancado(campos[0], Integer.parseInt(campos[1]),
+                Float.parseFloat(campos[2]),
+                Float.parseFloat(campos[3]),
+                Float.parseFloat(campos[4]),
+                Float.parseFloat(campos[5]),
+                Float.parseFloat(campos[6]),
+                Float.parseFloat(campos[7]),
+                Float.parseFloat(campos[8]),
+                Float.parseFloat(campos[9]));
     }
 
     public float getAmbi()

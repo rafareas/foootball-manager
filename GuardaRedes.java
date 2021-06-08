@@ -7,10 +7,10 @@ public class GuardaRedes extends Player {
 		this.elasticidade = 0;
 	}
     
-    public GuardaRedes (String nNome, int nnum,float nremate, float nvelocidade, float nresistencia, float ndestreza, 
-    					float nimpulsao, float njogo_cabeca, float ncapac_passe,String nhistory,float nelast){
+    public GuardaRedes (String nNome, int nnum,float nvelocidade, float nresistencia, float ndestreza, 
+    float nimpulsao, float njogo_cabeca,float nremate, float ncapac_passe,float nelast){
 
-    	super(nNome, nnum, nremate, nvelocidade, nresistencia,ndestreza,nimpulsao, njogo_cabeca, ncapac_passe,nhistory);
+    	super(nNome, nnum, nremate, nvelocidade, nresistencia,ndestreza,nimpulsao, njogo_cabeca, ncapac_passe);
     	this.elasticidade = nelast;
     }
 
@@ -27,6 +27,19 @@ public class GuardaRedes extends Player {
         super.setCapac_passe(info.getCapac_passe());
         super.setHistorico(info.getHistorico());
         this.setElast(info.getElast());
+    }
+
+    public static GuardaRedes parse(String input){
+        String[] campos = input.split(",");
+        return new GuardaRedes(campos[0], Integer.parseInt(campos[1]),
+                Float.parseFloat(campos[2]),
+                Float.parseFloat(campos[3]),
+                Float.parseFloat(campos[4]),
+                Float.parseFloat(campos[5]),
+                Float.parseFloat(campos[6]),
+                Float.parseFloat(campos[7]),
+                Float.parseFloat(campos[8]),
+                Float.parseFloat(campos[9]));
     }
 
     public float getElast()
