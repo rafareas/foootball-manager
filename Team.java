@@ -1,14 +1,15 @@
-import java.util.ArrayList;
-import java.util.List;
 import java.io.*;
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.Map;
+import java.util.HashMap;
+import java.util.Iterator;
 
 public class Team {
     
     /** INSTANCE VARIABLES*/
     
-    private List <Player> jogadores;
+    private Map <Int,Player> jogadores;
     private double team_overall;
     private String nome_time;
     
@@ -21,14 +22,14 @@ public class Team {
         this.nome_time = "";
     }
    
-    public Team(List<Player>players,String time){
-        this.jogadores = new ArrayList<>();
+    public Team(Map<Int,Player>players,String time){
+        this.jogadores = new HashMap<>();
         this.team_overall = 0;
         
         int i = 0;
-        for(Player j : players){
+        for(Player j : players.values()){
             i++;
-            this.jogadores.add(j.clone());
+            this.jogadores.put(j.getNumero_jogador(),j.clone());
             this.team_overall +=  j.overall();
         }
 
@@ -40,6 +41,12 @@ public class Team {
          this.jogadores = t.getPlayers();
          this.team_overall = t.getTeamOverall();
          this.nome_time = t.getNome_time();
+     }
+
+     public Team(String s){
+        this.jogadores = new ArrayList<>();
+        this.team_overall = 0; 
+        this.nome_time = s;
      }
 
     /** -----------------------------------------------*/
@@ -61,10 +68,10 @@ public class Team {
         this.team_overall = ovr;
     }
 
-    public List <Player> getPlayers(){
-        List<Player> time = new ArrayList<>();
+    public Map <Int,Player> getPlayers(){
+        Map<Int,Player> time = new HashMap<>();
         for(Player j : this.jogadores){
-            time.add(j.clone());
+            time.put(j.getNumero_jogador(),j.clone());
         }
         return time;
     }
@@ -77,7 +84,7 @@ public class Team {
         int size = this.jogadores.size();
        
         double soma = 0;
-        for (Player j : this.jogadores)
+        for (Player j : this.jogadores.values())
             soma += j.overall();
 
         if (soma != 0) this.team_overall = soma/size;
@@ -88,7 +95,7 @@ public class Team {
     public void checkShirt(Player p)
     {
         ArrayList<Integer> lst = new ArrayList<>();
-        for(Player pl : this.jogadores)
+        for(Player pl : this.jogadores.values())
             lst.add(pl.getNumero_jogador());
 
         while(lst.contains(p.getNumero_jogador()))
@@ -99,31 +106,43 @@ public class Team {
 
     }
 
+    // Função que verifica se o nome do jogador já existe
+    public int existeNome(String nome){
+        Iterator<Player> it = this.jogadores.values().iterator(); // percorre os valores da lista
+        int flag = 0;
+        while (it.hasNext() && flag == 0) { // enquanto houver elementos na lista
+            if(it.next().getNome().equals(nome))
+                flag = 1;
+        }
+        return flag;
+    }
+    
     /*Função para incrementar o time com um novo jogador*/
-    public void addPlayer_time(Player p){
-        if (this.jogadores.contains(p))
-            System.out.println(p.getNome()+" já está no time!");
-
+    
+    
+    public void addPlayer_time(Player p) throws JogadorExisteException{
+        if (this.existeNome(p.getNome()) == 1)
+            throw new JogadorExisteException(p.getNome());
         else
         {
             this.checkShirt(p);
             p.setHistorico(p.getHistorico()+this.getNome_time()+"\n");
-            this.jogadores.add(p.clone());
+            this.jogadores.put(p.getNumero_jogador(),p.clone());
             this.recalcOverall();
         }
     }
 
     /*Função para remover um determinado jogador do time*/
-    public void removePlayer_time(Player p)
+    public void removePlayer_time(Player p) throws NoPlayerException
     {
-        if (this.jogadores.contains(p))
+        if (this.jogadores.containsKey(p.getNumero_jogador()))
         {
-            this.jogadores.remove(p.clone());
+            this.jogadores.remove(p.getNumero_jogador());
             this.recalcOverall();
         }
 
         else
-            System.out.println(p.getNome()+" não está no time!");
+            throw new NoPlayerException(p.getNome());
         
     }
 
