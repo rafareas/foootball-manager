@@ -9,7 +9,7 @@ public class Team {
     
     /** INSTANCE VARIABLES*/
     
-    private Map <Int,Player> jogadores;
+    private Map <Integer,Player> jogadores;
     private double team_overall;
     private String nome_time;
     
@@ -17,12 +17,12 @@ public class Team {
     /** CONSTRUCTORS */
 
     public Team(){
-        this.jogadores = new ArrayList<>();
+        this.jogadores = new HashMap<>();
         this.team_overall = 0; 
         this.nome_time = "";
     }
    
-    public Team(Map<Int,Player>players,String time){
+    public Team(Map<Integer,Player>players,String time){
         this.jogadores = new HashMap<>();
         this.team_overall = 0;
         
@@ -43,8 +43,8 @@ public class Team {
          this.nome_time = t.getNome_time();
      }
 
-     public Team(String s){
-        this.jogadores = new ArrayList<>();
+    public Team(String s){
+        this.jogadores = new HashMap<>();
         this.team_overall = 0; 
         this.nome_time = s;
      }
@@ -68,9 +68,9 @@ public class Team {
         this.team_overall = ovr;
     }
 
-    public Map <Int,Player> getPlayers(){
-        Map<Int,Player> time = new HashMap<>();
-        for(Player j : this.jogadores){
+    public Map <Integer,Player> getPlayers(){
+        Map<Integer,Player> time = new HashMap<>();
+        for(Player j : this.jogadores.values()){
             time.put(j.getNumero_jogador(),j.clone());
         }
         return time;
@@ -118,8 +118,6 @@ public class Team {
     }
     
     /*Função para incrementar o time com um novo jogador*/
-    
-    
     public void addPlayer_time(Player p) throws JogadorExisteException{
         if (this.existeNome(p.getNome()) == 1)
             throw new JogadorExisteException(p.getNome());
@@ -144,6 +142,12 @@ public class Team {
         else
             throw new NoPlayerException(p.getNome());
         
+    }
+
+    /*Função clone*/
+    public Team clone()
+    {
+        return new Team(this);
     }
 
     /*----------------------------------------------------------------------------------*/

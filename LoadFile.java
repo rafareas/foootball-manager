@@ -7,16 +7,18 @@ import java.util.List;
 
 public class LoadFile {
     
-    public Equipas parse() throws LinhaIncorretaException {
-        List<String> linhas = lerFicheiro("output.txt");
+    public Equipas parse(String fileName) throws LinhaIncorretaException, ReadException {
+        List<String> linhas = lerFicheiro(fileName);
         //Map<String, Equipa> equipas = new HashMap<>(); //nome, equipa
         //Map<Integer, Jogador> jogadores = new HashMap<>(); //numero, jogador
         //List<Jogo> jogos = new ArrayList<>();
         Equipas allTeams = new Equipas();
         Team ultima = null; Player j = null;
         int firstJogo = 1;
+        int counter = 0;
         String[] linhaPartida;
         for (String linha : linhas) {
+            System.out.println(counter);
             linhaPartida = linha.split(":", 2);
             switch(linhaPartida[0]){
                 case "Equipa":
@@ -27,27 +29,32 @@ public class LoadFile {
                 case "Guarda-Redes":
                     j = GuardaRedes.parse(linhaPartida[1]);
                     if (ultima == null) throw new LinhaIncorretaException(); //we need to insert the player into the team
-                    ultima.addPlayer_time(j.clone()); //if no team was parsed previously, file is not well-formed
+                    try{ultima.addPlayer_time(j.clone());} //if no team was parsed previously, file is not well-formed
+                    catch(JogadorExisteException je){throw new ReadException();}
                     break;
                 case "Defesa":
                     j = Defesa.parse(linhaPartida[1]);
                     if (ultima == null) throw new LinhaIncorretaException(); //we need to insert the player into the team
-                    ultima.addPlayer_time(j.clone()); //if no team was parsed previously, file is not well-formed
+                    try{ultima.addPlayer_time(j.clone());} //if no team was parsed previously, file is not well-formed
+                    catch(JogadorExisteException je){throw new ReadException();}
                     break;
                 case "Medio":
                     j = Medio.parse(linhaPartida[1]);
                     if (ultima == null) throw new LinhaIncorretaException(); //we need to insert the player into the team
-                    ultima.addPlayer_time(j.clone()); //if no team was parsed previously, file is not well-formed
+                    try{ultima.addPlayer_time(j.clone());} //if no team was parsed previously, file is not well-formed
+                    catch(JogadorExisteException je){throw new ReadException();}
                     break;
                 case "Lateral":
                     j = Lateral.parse(linhaPartida[1]);
                     if (ultima == null) throw new LinhaIncorretaException(); //we need to insert the player into the team
-                    ultima.addPlayer_time(j.clone()); //if no team was parsed previously, file is not well-formed
+                    try{ultima.addPlayer_time(j.clone());} //if no team was parsed previously, file is not well-formed
+                    catch(JogadorExisteException je){throw new ReadException();}
                     break;
                 case "Avancado":
                     j = Avancado.parse(linhaPartida[1]);
                     if (ultima == null) throw new LinhaIncorretaException(); //we need to insert the player into the team
-                    ultima.addPlayer_time(j.clone()); //if no team was parsed previously, file is not well-formed
+                    try{ultima.addPlayer_time(j.clone());} //if no team was parsed previously, file is not well-formed
+                    catch(JogadorExisteException je){throw new ReadException();}
                     break;
                 case "Jogo":
                     if(firstJogo == 1) allTeams.addTeam(ultima);
@@ -58,6 +65,7 @@ public class LoadFile {
                     break; //throw new LinhaIncorretaException();
 
             }
+            counter++;
         }
 
         //debug

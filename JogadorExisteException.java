@@ -1,4 +1,4 @@
-public class JogadorExisteException {
+public class JogadorExisteException extends Exception {
     public JogadorExisteException(){
         super();
     }
