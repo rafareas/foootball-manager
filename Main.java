@@ -36,10 +36,10 @@ public class Main{
 */
 
         LoadFile lf = new LoadFile();
-        Equipas e = new Equipas();
+        Equipas eq = new Equipas();
        
        try{
-         e = lf.parse("logsV2.txt"); 
+         eq = lf.parse("logsV2.txt"); 
        } 
        catch(LinhaIncorretaException|ReadException ex){
         System.out.println(ex.getMessage() + "Linha incorreta / leu incorretamente\n");
@@ -50,11 +50,20 @@ public class Main{
         while(op != -1){ // opcoes que são de saida do jogo
             op = m.menuPrincipal(); 
             if(op != 4){
-                //fazer um switch para cada opção
-                if(op == 1){
-                    String teamName = m.menuTimes(e);
-                    Team time = e.getElenco(teamName);
-                    op = m.menuPlayers(time);
+                switch(op){
+                    case 1:
+                        String teamName = m.menuTimes(eq);
+                        Team time = eq.getElenco(teamName);
+                        m.showJogadores(time);
+                        op = m.menuFinal();
+                        break;
+                    case 2:
+                        m.execTransfer(eq);
+                        op = m.menuFinal();
+                        break;
+                    case 3:
+                        break;
+                    default: break;             
                 }
             }
         }

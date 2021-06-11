@@ -9,7 +9,7 @@ public class Team {
     
     /** INSTANCE VARIABLES*/
     
-    private Map <Integer,Player> jogadores;
+    private Map <String,Player> jogadores;
     private double team_overall;
     private String nome_time;
     
@@ -29,7 +29,7 @@ public class Team {
         int i = 0;
         for(Player j : players.values()){
             i++;
-            this.jogadores.put(j.getNumero_jogador(),j.clone());
+            this.jogadores.put(j.getNome(),j.clone());
             this.team_overall +=  j.overall();
         }
 
@@ -68,12 +68,16 @@ public class Team {
         this.team_overall = ovr;
     }
 
-    public Map <Integer,Player> getPlayers(){
-        Map<Integer,Player> time = new HashMap<>();
+    public Map <String,Player> getPlayers(){
+        Map<String,Player> time = new HashMap<>();
         for(Player j : this.jogadores.values()){
-            time.put(j.getNumero_jogador(),j.clone());
+            time.put(j.getNome(),j.clone());
         }
         return time;
+    }
+
+    public Player getPlayer(String nome){
+        return this.jogadores.get(nome).clone();
     }
 
     public Collection<Player> getSetPlayers(){
@@ -111,25 +115,21 @@ public class Team {
     }
 
     // Função que verifica se o nome do jogador já existe
-    public int existeNome(String nome){
-        Iterator<Player> it = this.jogadores.values().iterator(); // percorre os valores da lista
-        int flag = 0;
-        while (it.hasNext() && flag == 0) { // enquanto houver elementos na lista
-            if(it.next().getNome().equals(nome))
-                flag = 1;
-        }
-        return flag;
+    
+    public boolean existeNome(String nome){
+        return this.jogadores.containsKey(nome);
     }
+    
     
     /*Função para incrementar o time com um novo jogador*/
     public void addPlayer_time(Player p) throws JogadorExisteException{
-        if (this.existeNome(p.getNome()) == 1)
+        if (this.jogadores.containsKey(p.getNome()))
             throw new JogadorExisteException(p.getNome());
         else
         {
             this.checkShirt(p);
             p.setHistorico(p.getHistorico()+this.getNome_time()+"\n");
-            this.jogadores.put(p.getNumero_jogador(),p.clone());
+            this.jogadores.put(p.getNome(),p.clone());
             this.recalcOverall();
         }
     }
@@ -137,9 +137,9 @@ public class Team {
     /*Função para remover um determinado jogador do time*/
     public void removePlayer_time(Player p) throws NoPlayerException
     {
-        if (this.jogadores.containsKey(p.getNumero_jogador()))
+        if (this.jogadores.containsKey(p.getNome()))
         {
-            this.jogadores.remove(p.getNumero_jogador());
+            this.jogadores.remove(p.getNome());
             this.recalcOverall();
         }
 
@@ -147,6 +147,9 @@ public class Team {
             throw new NoPlayerException(p.getNome());
         
     }
+
+
+    
 
     /*Função clone*/
     public Team clone()

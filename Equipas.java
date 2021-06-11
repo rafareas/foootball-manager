@@ -71,18 +71,33 @@ public class Equipas {
     		this.times.get(oldTeam).removePlayer_time(p);
     	}
     	catch(NoPlayerException n){
-            throw new TransferError(p.getNome());
+            throw new TransferError(oldTeam);
         }
 
     	try{
     		this.times.get(newTeam).addPlayer_time(p);
     	}
     	catch(JogadorExisteException j){
-            throw new TransferError(p.getNome());
+            throw new TransferError(newTeam);
         }
 
     }
 
+    public Team searchPlayer(String nome){
+        Iterator<Team> it = this.times.values().iterator(); // percorre os valores da lista
+        int flag = 0;
+        Team t = new Team();
+        Team aux = new Team();
+        while (it.hasNext() && flag == 0) { // enquanto houver elementos na lista
+            aux = it.next();
+            if(aux.existeNome(nome)){
+                flag = 1;
+                t = aux.clone();
+            }
+        }
+        return t;
+        
+    }
     
 
     /*-------------------------------------------------------*/

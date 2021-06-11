@@ -2,6 +2,9 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Menu {
+    
+    /** Mostra o menu principal e ler a opção do usuario*/
+    
     public int menuPrincipal(){
         int opcao = -1;
         showMenuPrincipal();
@@ -21,6 +24,7 @@ public class Menu {
         System.out.println("-> 4. Sair do Jogo\n\n");
     }
 
+
     public int lerOpcaoMenu(int nopcoes){
         int op;
         Scanner is = new Scanner(System.in);
@@ -38,6 +42,10 @@ public class Menu {
         }
         return op;
     }
+
+    //-------------------------------------------
+
+    /** Opção 1 */
 
     public String menuTimes(Equipas eq){
         showtimes(eq);
@@ -75,8 +83,7 @@ public class Menu {
     }
 
 
-    public int menuPlayers(Team t){
-        showJogadores(t);
+    public int menuFinal(){
         int op = -1;
         System.out.println("\n\nDeseja fazer o que agora??\n");
         System.out.println("1 -> Voltar para o menu principal\n");
@@ -96,4 +103,59 @@ public class Menu {
         }
         System.out.println("\n");
     }
+
+    //--------------------------------------------------------
+
+    /** Opção 2 */
+
+    public void execTransfer(Equipas eq){
+        Team t = new Team();
+        String nome = "";
+        Scanner is = new Scanner(System.in);
+        while(t.getNome_time().equals("")){ // Pede um jogador ao usuário e devolve o time que ele está inserido
+            System.out.println("Digite o nome do jogador que quer fazer transferancia: ");
+            nome = is.nextLine();
+            t = eq.searchPlayer(nome);
+            if(t.getNome_time().equals("")){
+                System.out.println(nome + " não está em nenhum time, por favor digite um jogador válido\n");
+            }
+        }
+        Player p = t.getPlayer(nome);
+        int oldShirt = p.getNumero_jogador();
+        String oldTeam = t.getNome_time();
+        int flag = 0;
+        String newTeam = "";
+        while(flag == 0){ // Realizar a transferência do jogador para um clube que o usuário queira
+            System.out.println("\nDigite um time para transferencia: ");
+            newTeam = is.nextLine();
+            try{
+                eq.transfer(p, oldTeam , newTeam);
+                flag++;
+            }
+            catch(TransferError e){
+                System.out.println(e.getMessage() + "Incorreto, insira um time correto");
+            }
+        }
+
+        StringBuilder sb = new StringBuilder();
+        sb.append("\n\n--Transferencia realizada do(a) craque " + nome + "--\n\n")
+            .append("Clube antigo: "+ oldTeam + "\n")
+            .append("Numero de camisa antigo: "+ oldShirt+"\n\n")
+            .append("Novo time: " + newTeam + "\n")
+            .append("Camisa que irá utilizar: " + p.getNumero_jogador() + "\n");
+        
+        System.out.println(sb.toString());
+
+
+        
+
+
+        
+
+
+        
+    }
+
+     
+    
 }
