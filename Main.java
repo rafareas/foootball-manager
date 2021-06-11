@@ -39,12 +39,27 @@ public class Main{
         Equipas e = new Equipas();
        
        try{
-         e = lf.parse("../logsV2.txt"); 
+         e = lf.parse("logsV2.txt"); 
        } 
        catch(LinhaIncorretaException|ReadException ex){
-        System.out.println("Erro\n");
+        System.out.println(ex.getMessage() + "Linha incorreta / leu incorretamente\n");
         }
 
+        int op = 0; // opcao de sáida
+        Menu m = new Menu();
+        while(op != -1){ // opcoes que são de saida do jogo
+            op = m.menuPrincipal(); 
+            if(op != 4){
+                //fazer um switch para cada opção
+                if(op == 1){
+                    String teamName = m.menuTimes(e);
+                    Team time = e.getElenco(teamName);
+                    op = m.menuPlayers(time);
+                }
+            }
+        }
+
+        /*
         Player eu = e.getTimes().get("Mozart F. C.").getPlayers().get(48);
 
         System.out.println("Eu sou: "+eu.getNome());
@@ -58,6 +73,6 @@ public class Main{
         System.out.println("Passe: "+eu.getCapac_passe());
         System.out.println("Meus clubes: "+eu.getHistorico());
         System.out.println(eu.history());
-
+        */
     }
 }

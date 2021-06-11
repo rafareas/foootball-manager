@@ -9,9 +9,6 @@ public class LoadFile {
     
     public Equipas parse(String fileName) throws LinhaIncorretaException, ReadException {
         List<String> linhas = lerFicheiro(fileName);
-        //Map<String, Equipa> equipas = new HashMap<>(); //nome, equipa
-        //Map<Integer, Jogador> jogadores = new HashMap<>(); //numero, jogador
-        //List<Jogo> jogos = new ArrayList<>();
         Equipas allTeams = new Equipas();
         Team ultima = null; Player j = null;
         int firstJogo = 1;
@@ -56,6 +53,7 @@ public class LoadFile {
                     break;
                 case "Jogo":
                     if(firstJogo == 1) allTeams.addTeam(ultima);
+                    firstJogo++;
                     //Jogo jo = Jogo.parse(linhaPartida[1]);
                     //jogos.add(jo);
                     break;
@@ -82,7 +80,9 @@ public class LoadFile {
     public static List<String> lerFicheiro(String nomeFich) {
         List<String> lines;
         try { lines = Files.readAllLines(Paths.get(nomeFich), StandardCharsets.UTF_8); }
-        catch(IOException exc) { lines = new ArrayList<>(); }
+        catch(IOException exc) { 
+            System.out.println("Erro na lida do arquivo" + exc.getMessage());
+            lines = new ArrayList<>(); }
         return lines;
     }
 

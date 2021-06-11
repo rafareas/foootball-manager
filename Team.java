@@ -75,6 +75,10 @@ public class Team {
         }
         return time;
     }
+
+    public Collection<Player> getSetPlayers(){
+        return this.jogadores.values();
+    }
     
     /*---------------------------------------------------*/
 
@@ -151,7 +155,7 @@ public class Team {
     }
 
     /*----------------------------------------------------------------------------------*/
-
+    /*
     public void saveToCSV(String fn) throws FileNotFoundException, IOException{
         PrintWriter pw = new PrintWriter(new FileOutputStream(fn));
         pw.flush();
@@ -172,4 +176,5 @@ public class Team {
         i.close();
         return d;
     }
+    */
 }

@@ -32,6 +32,12 @@ public class Equipas {
 
     /*CLASS FUNCTIONS*/
 
+
+    public Team getElenco(String t){
+        return this.times.get(t);
+    }
+
+
     public Map<String,Team> getTimes()
     {
     	Map<String,Team> ntimes = new HashMap<>();
@@ -39,6 +45,14 @@ public class Equipas {
     		ntimes.put(t.getNome_time(),t.clone());
 
     	return ntimes;
+    }
+
+    public int existeTime(String t){
+        return (this.times.containsKey(t))? 1 : 0 ;
+    }
+
+    public Set<String> getNomes(){
+        return getTimes().keySet();
     }
 
     public void addTeam(Team t)
@@ -68,6 +82,8 @@ public class Equipas {
         }
 
     }
+
+    
 
     /*-------------------------------------------------------*/
 }
