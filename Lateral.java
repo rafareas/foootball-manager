@@ -8,8 +8,8 @@ public class Lateral extends Player {
 		this.cruzamento = 0;
 	}
 
-	public Lateral (String nNome, int nnum,float nvelocidade, float nresistencia, float ndestreza, 
-    float nimpulsao, float njogo_cabeca,float nremate, float ncapac_passe,float ncruz){
+	public Lateral (String nNome, int nnum,float nremate,float nvelocidade, float nresistencia, float ndestreza, 
+    float nimpulsao, float njogo_cabeca, float ncapac_passe,float ncruz){
 
 
     	super(nNome, nnum, nremate, nvelocidade, nresistencia, ndestreza,nimpulsao,njogo_cabeca,ncapac_passe);

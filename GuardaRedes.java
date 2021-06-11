@@ -7,8 +7,8 @@ public class GuardaRedes extends Player {
 		this.elasticidade = 0;
 	}
     
-    public GuardaRedes (String nNome, int nnum,float nvelocidade, float nresistencia, float ndestreza, 
-    float nimpulsao, float njogo_cabeca,float nremate, float ncapac_passe,float nelast){
+    public GuardaRedes (String nNome, int nnum,float nremate,float nvelocidade, float nresistencia, float ndestreza, 
+    float nimpulsao, float njogo_cabeca, float ncapac_passe,float nelast){
 
     	super(nNome, nnum, nremate, nvelocidade, nresistencia,ndestreza,nimpulsao, njogo_cabeca, ncapac_passe);
     	this.elasticidade = nelast;

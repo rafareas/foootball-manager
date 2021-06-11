@@ -8,8 +8,8 @@ public class Defesa extends Player {
 		this.protecao = 0;
 	}
 
-	public Defesa (String nNome, int nnum,float nvelocidade, float nresistencia, float ndestreza, 
-    float nimpulsao, float njogo_cabeca,float nremate, float ncapac_passe,float nprot){
+	public Defesa (String nNome, int nnum,float nremate,float nvelocidade, float nresistencia, float ndestreza, 
+    float nimpulsao, float njogo_cabeca, float ncapac_passe,float nprot){
 
     	super(nNome, nnum, nremate, nvelocidade, nresistencia,ndestreza,nimpulsao,njogo_cabeca, ncapac_passe);
     	this.protecao = nprot;
@@ -40,7 +40,7 @@ public class Defesa extends Player {
                 Float.parseFloat(campos[6]),
                 Float.parseFloat(campos[7]),
                 Float.parseFloat(campos[8]),
-                Float.parseFloat(campos[9]));
+                (float) (Math.random() * 100));
     }
     
     public float getProt()

@@ -15,10 +15,8 @@ public class LoadFile {
         Equipas allTeams = new Equipas();
         Team ultima = null; Player j = null;
         int firstJogo = 1;
-        int counter = 0;
         String[] linhaPartida;
         for (String linha : linhas) {
-            System.out.println(counter);
             linhaPartida = linha.split(":", 2);
             switch(linhaPartida[0]){
                 case "Equipa":
@@ -65,7 +63,6 @@ public class LoadFile {
                     break; //throw new LinhaIncorretaException();
 
             }
-            counter++;
         }
 
         //debug

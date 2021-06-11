@@ -1,5 +1,7 @@
 JC = javac
 
+ac: all clean
+
 all: compile run 
 
 compile:

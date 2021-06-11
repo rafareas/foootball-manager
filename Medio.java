@@ -8,8 +8,8 @@ public class Medio extends Player {
 		this.recuperacao = 0;
 	}
 
-	public Medio (String nNome, int nnum,float nvelocidade, float nresistencia, float ndestreza, 
-    					float nimpulsao, float njogo_cabeca,float nremate, float ncapac_passe,float nrec){
+	public Medio (String nNome, int nnum,float nremate,float nvelocidade, float nresistencia, float ndestreza, 
+    					float nimpulsao, float njogo_cabeca, float ncapac_passe,float nrec){
 
     	super(nNome, nnum, nremate,nvelocidade,nresistencia,ndestreza,nimpulsao, njogo_cabeca, ncapac_passe);
     	this.recuperacao = nrec;

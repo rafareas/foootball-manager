@@ -36,13 +36,28 @@ public class Main{
 */
 
         LoadFile lf = new LoadFile();
+        Equipas e = new Equipas();
        
        try{
-        Equipas e = lf.parse("../logsV2.txt"); 
+         e = lf.parse("../logsV2.txt"); 
        } 
        catch(LinhaIncorretaException|ReadException ex){
         System.out.println("Erro\n");
         }
+
+        Player eu = e.getTimes().get("Mozart F. C.").getPlayers().get(48);
+
+        System.out.println("Eu sou: "+eu.getNome());
+        System.out.println("Sou numero: "+eu.getNumero_jogador());
+        System.out.println("Remate: "+eu.getRemate());
+        System.out.println("Velocidade: "+eu.getVelocidade());
+        System.out.println("Resistencia: "+eu.getResistencia());
+        System.out.println("Destreza: "+eu.getDestreza());
+        System.out.println("Impulsao: "+eu.getImpulsao());
+        System.out.println("Cabeca: "+eu.getJogo_cabeca());
+        System.out.println("Passe: "+eu.getCapac_passe());
+        System.out.println("Meus clubes: "+eu.getHistorico());
+        System.out.println(eu.history());
 
     }
 }
