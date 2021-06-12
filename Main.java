@@ -62,26 +62,14 @@ public class Main{
                         op = m.menuFinal();
                         break;
                     case 3:
+                        m.showHistory(eq);
+                        op = m.menuFinal();
                         break;
                     default: break;             
                 }
             }
+            else System.out.println("\nAté a próxima!\n");
         }
 
-        /*
-        Player eu = e.getTimes().get("Mozart F. C.").getPlayers().get(48);
-
-        System.out.println("Eu sou: "+eu.getNome());
-        System.out.println("Sou numero: "+eu.getNumero_jogador());
-        System.out.println("Remate: "+eu.getRemate());
-        System.out.println("Velocidade: "+eu.getVelocidade());
-        System.out.println("Resistencia: "+eu.getResistencia());
-        System.out.println("Destreza: "+eu.getDestreza());
-        System.out.println("Impulsao: "+eu.getImpulsao());
-        System.out.println("Cabeca: "+eu.getJogo_cabeca());
-        System.out.println("Passe: "+eu.getCapac_passe());
-        System.out.println("Meus clubes: "+eu.getHistorico());
-        System.out.println(eu.history());
-        */
     }
 }

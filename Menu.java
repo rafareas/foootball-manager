@@ -148,14 +148,30 @@ public class Menu {
 
 
         
-
-
-        
-
-
-        
     }
 
      
+    /*-----------------------------------------*/
+
+    /*Opcao 3*/
+
+    public void showHistory(Equipas eq){
+
+    Scanner is = new Scanner(System.in);
     
+    System.out.println("Digite o nome do jogador que deseja o Histórico: ");
+    
+    String p = is.nextLine();
+
+    StringBuilder sb = new StringBuilder();
+       
+   try{
+        sb.append("\n"+(eq.searchPlayer(p).getPlayer(p).history()));}
+
+    catch(Exception e){
+        sb.append("\n"+p+" não existe!");}
+
+    System.out.println(sb.toString());
+
+    }
 }
