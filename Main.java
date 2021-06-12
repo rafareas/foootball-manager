@@ -68,7 +68,7 @@ public class Main{
                     default: break;             
                 }
             }
-            else System.out.println("\nAté a próxima!\n");
         }
+        System.out.println("\nAté a próxima!\n");
     }
 }
