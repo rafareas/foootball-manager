@@ -3,7 +3,7 @@ import java.io.*;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public abstract class Player{
+public abstract class Player implements Serializable{
     
     /** INSTANCE VARIABLES */
 

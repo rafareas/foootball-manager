@@ -5,7 +5,7 @@ import java.util.Map;
 import java.util.HashMap;
 import java.util.Iterator;
 
-public class Equipas {
+public class Equipas implements Serializable{
 
 	/*INSTANCE VARIABLES*/
     private Map <String,Team> times;
@@ -101,4 +101,24 @@ public class Equipas {
     
 
     /*-------------------------------------------------------*/
+
+
+    /** Salva-guarda do estado do jogo, e leitura do mesmo */
+
+    public void saveBinary(String file) throws IOException {
+        FileOutputStream f = new FileOutputStream(new File(file));
+        ObjectOutputStream o = new ObjectOutputStream(f);
+        o.writeObject(this);
+        o.flush();
+        o.close();
+    }
+
+    public Equipas readObject(String f) throws IOException, ClassNotFoundException {
+        ObjectInputStream i = new ObjectInputStream(new FileInputStream(f));
+        Equipas d = (Equipas) i.readObject();
+        i.close();
+        return d;
+    }
+
+
 }

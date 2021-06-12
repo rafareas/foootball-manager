@@ -2,7 +2,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Menu {
-    
+
     /** Mostra o menu principal e ler a opção do usuario*/
     
     public int menuPrincipal(){
@@ -16,12 +16,16 @@ public class Menu {
     }
 
     public void showMenuPrincipal(){
-        System.out.println("\n *** Menu Principal de Jogo *** \n\n");
-        System.out.println("*Opções:\n");
-        System.out.println("-> 1. Ver os times do jogo\n");
-        System.out.println("-> 2. Fazer uma transferência\n");
-        System.out.println("-> 3. Ver o Histórico de times de um jogador\n");
-        System.out.println("-> 4. Sair do Jogo\n\n");
+        StringBuilder sb = new StringBuilder();
+        
+        sb.append("\n *** Menu Principal de Jogo *** \n\n")
+        .append("*Opções:\n")
+        .append("-> 1. Ver os times do jogo\n")
+        .append("-> 2. Fazer uma transferência\n")
+        .append("-> 3. Ver o Histórico de times de um jogador\n")
+        .append("-> 4. Sair do Jogo\n\n");
+
+        System.out.println(sb.toString());
     }
 
 
@@ -61,11 +65,13 @@ public class Menu {
 
 
     public void showtimes(Equipas eq){
-        System.out.println("\n *** Lista de times do Jogo *** \n\n");
+        StringBuilder sb = new StringBuilder();
+        sb.append("\n *** Lista de times do Jogo *** \n\n");
         for( String t : eq.getNomes()){
-            System.out.println("."+t+"\n");
+            sb.append("."+t+"\n");
         }
-        System.out.println("\n");
+        sb.append("\n");
+        System.out.println(sb.toString());
     }
     
     public String lerTime(Equipas eq){
@@ -96,12 +102,13 @@ public class Menu {
     }    
 
     public void showJogadores(Team t){
-        System.out.println("\n *** Elenco: *** \n\n");
-        System.out.println("*Overall da equipa: " + t.getTeamOverall() + "\n");
+        StringBuilder sb = new StringBuilder();
+        sb.append("\n *** Elenco: *** \n\n");
+        sb.append("*Overall da equipa: " + String.format("%.0f", t.getTeamOverall()) + "\n\n");
         for (Player p : t.getSetPlayers()){
-            System.out.println("| " + p.getNome() + " ( " + p.getNumero_jogador() + " )    Overall: " + p.overall() + "\n");
+            sb.append("| " + p.getNome() + " ( " + p.getNumero_jogador() + " )    Overall: " + String.format("%.0f",p.overall()) + "\n");
         }
-        System.out.println("\n");
+        System.out.println(sb.toString());
     }
 
     //--------------------------------------------------------
