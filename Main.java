@@ -62,10 +62,13 @@ public class Main{
                         op = m.menuFinal();
                         break;
                     case 3:
+                        m.showHistory(eq);
+                        op = m.menuFinal();
                         break;
                     default: break;             
                 }
             }
+            else System.out.println("\nAté a próxima!\n");
         }
     }
 }
